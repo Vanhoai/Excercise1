@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
         database = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "AppDatabase"
-        ).addMigrations(AppDatabase.MIGRATION_1_2).build()
+        ).addMigrations(AppDatabase.MIGRATION_2_3).build()
 
         studentDao = database.studentDao()
 
@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
 //            studentDao.insert(Student(name = "Tăng Hồng Nguyên Đán", age = 22, address = "An Giang"))
 //            studentDao.insert(Student(name = "Võ Ngọc Min Kiên", age = 21, address = "Gia Lai"))
 
-            studentDao.insert(Student(name = "Hà Huy Trí", age = 21, address = "Hà Nội", gender = 1))
+            studentDao.insert(Student(name = "Trần Hồng Thanh Trúc", age = 5, gender = 0))
 
             val students = studentDao.getAllStudents()
             students.forEach {

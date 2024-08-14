@@ -7,7 +7,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [Student::class],
-    version = 2,
+    version = 3,
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun studentDao(): StudentDao
@@ -20,6 +20,13 @@ abstract class AppDatabase : RoomDatabase() {
                 database.execSQL(sql)
             }
         }
-    }
 
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            // run migrate remove column address
+            override fun migrate(database: SupportSQLiteDatabase) {
+                val sql = "ALTER TABLE students DROP COLUMN address"
+                database.execSQL(sql)
+            }
+        }
+    }
 }
