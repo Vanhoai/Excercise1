@@ -38,14 +38,16 @@ class MainActivity : ComponentActivity() {
         database = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "AppDatabase"
-        ).build()
+        ).addMigrations(AppDatabase.MIGRATION_1_2).build()
 
         studentDao = database.studentDao()
 
         GlobalScope.launch {
-            studentDao.insert(Student(name = "Trần Văn Hoài", age = 21, address = "Đà Nẳng"))
-            studentDao.insert(Student(name = "Tăng Hồng Nguyên Đán", age = 22, address = "An Giang"))
-            studentDao.insert(Student(name = "Võ Ngọc Min Kiên", age = 21, address = "Gia Lai"))
+//            studentDao.insert(Student(name = "Trần Văn Hoài", age = 21, address = "Đà Nẳng"))
+//            studentDao.insert(Student(name = "Tăng Hồng Nguyên Đán", age = 22, address = "An Giang"))
+//            studentDao.insert(Student(name = "Võ Ngọc Min Kiên", age = 21, address = "Gia Lai"))
+
+            studentDao.insert(Student(name = "Hà Huy Trí", age = 21, address = "Hà Nội", gender = 1))
 
             val students = studentDao.getAllStudents()
             students.forEach {

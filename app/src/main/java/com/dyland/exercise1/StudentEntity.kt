@@ -8,5 +8,6 @@ data class Student(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
     val address: String,
-    val age: Int
+    val age: Int,
+    val gender: Int
 )
